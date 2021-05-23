@@ -1,34 +1,54 @@
-let pokemonList = [
-  {
-    name: 'Arcanine ',
-    height: 6.2,
-    types: ['Fire']
-  },
 
-  {
-    name: 'Gengar ',
-    height: 5.1,
-    types: ['Ghost', 'Poison']
-  },
+  let pokemonRepository = (function() {
 
-  {
-    name: 'Eevee ',
-    height: 1.0,
-    types: ['Normal']
-  }
-];
+    let pokemonList = [
+      {
+        name: 'Arcanine ',
+        height: 6.2,
+        types: ['Fire']
+      },
 
-  // Print on screen Pokemon's name and age but with a conditional to authenticate if the pokemon is with a small pokemon or a big pokemon.
+      {
+        name: 'Gengar ',
+        height: 5.1,
+        types: ['Ghost', 'Poison']
+      },
 
-for (i = 0; i < pokemonList.length; i++) {
-  // iteration over pokemon.list's array 3 times
-  document.write(pokemonList[i].name + '(Height: ' + pokemonList[i].height + ')' );
-  // A conditional that will return a string to whether or not a Pokemon is big or small
-  if (pokemonList[i].height <= 3) {
-    document.write('<span class="smallP"> - This is a small Pokemon </span>');
-  } else if (pokemonList[i].height > 3 && pokemonList[i].height <= 10) {
-    document.write('<span class="bigP"> - This is a big Pokemon! </span>');
-  }
-  // Linebreak after every iteration
-  document.write('<br>');
-}
+      {
+        name: 'Eevee ',
+        height: 1.0,
+        types: ['Normal']
+      }
+    ];
+
+    let thisPokemonIS = 'This Pokemon\'s name is—';
+    let thisPokemonHeight = 'It\'s height is: ';
+    let bigPokemon = '<span class="bigP"> - This is a big Pokemon! </span>'
+    let smallPokemon = '<span class="smallP"> - This is a small Pokemon </span>'
+
+    // function to add new Pokemon's to the pokemonList array
+
+    function add(pokemon){
+      pokemonList.push(pokemon);
+    }
+
+    // function being declared to return an array from pokemonList
+
+    function getAll() {
+      return pokemonList;
+    }
+
+      // A forEach function that'll replace a for loop
+    pokemonList.forEach(function(pokemon){
+      // a series of template literals being used for cleaner code
+      document.write( `${thisPokemonIS}` + pokemon.name + `${thisPokemonHeight}` + pokemon.height);
+      // A conditional that will return a string to whether or not a Pokemon is big or small
+      if (pokemon.height <= 3) {
+        document.write(`${smallPokemon}`);
+      } else if (pokemon.height > 3 && pokemon.height <= 10) {
+        document.write(`${bigPokemon}`);
+      }
+      // Linebreak after every iteration
+      document.write('<br>')
+    });
+  })();
