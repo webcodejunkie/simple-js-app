@@ -59,8 +59,4 @@
       add: add,
       getAll: getAll
     };
-<<<<<<< HEAD
-=======
-
->>>>>>> 7296147bc25fe890b2da1bb6f47db9a0b2c03265
   })();
