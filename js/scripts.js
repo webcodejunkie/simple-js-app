@@ -22,7 +22,7 @@
     ];
 
     // function to add new Pokemon's to the pokemonList array & also check to make sure it adds an object rejecting all other types of
-    function add(pokemon){
+    function add(pokemon) {
       if (typeof (pokemon) === 'object') {
         pokemonList.push(pokemon);
         console.log('You\'ve successfully added a new Pokemon!');
@@ -36,21 +36,25 @@
       return pokemonList;
     }
 
+    function addListItem(pokemon) {
+      let pokemonList = document.querySelector('.pokemon-list');
+      let listItem = document.createElement('li');
+      listItem.classList.add('pokemon-list-items');
+      let button = document.createElement('button');
+      button.innerText = pokemon.name;
+      button.classList.add('pokemon-button');
+      listItem.appendChild(button);
+      pokemonList.appendChild(listItem);
+    }
+
     return {
       add: add,
-      getAll: getAll
+      getAll: getAll,
+      addListItem: addListItem
     };
   })();
 
   // a forEach function that'll replace a for loop
   pokemonRepository.getAll().forEach(function(pokemon){
-    document.write(`This Pokemon is — ${pokemon.name} it\'s height is (${pokemon.height})—`);
-    // A conditional that will return a string to whether or not a Pokemon is big or small
-    if (pokemon.height <= 3) {
-      document.write('<span class="smallP">' + 'This is a small Pokemon' + '</span>');
-    } else if (pokemon.height > 3 && pokemon.height <= 10) {
-      document.write('<span class="bigP">' + 'This is a big Pokemon' + '</span>');
-      // Linebreak after every iteration
-      document.write('<br>');
-    }
+    pokemonRepository.addListItem(pokemon);
   });

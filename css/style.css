@@ -20,3 +20,15 @@ body {
   color: blue;
   background-color: white;
 }
+
+.pokemon-button {
+  padding: 1rem;
+  color: black;
+  background-color; purple;
+
+}
+
+.pokemon-list-items {
+  background-image: linear-gradient(#fb01ff8a, #9621b3a6 40%);
+  box-shadow: 2px 2px 8px;
+}
