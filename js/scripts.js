@@ -23,17 +23,20 @@
 
     let thisPokemonIS = 'This Pokemon\'s name is—';
     let thisPokemonHeight = 'It\'s height is: ';
-    let bigPokemon = '<span class="bigP"> - This is a big Pokemon! </span>'
-    let smallPokemon = '<span class="smallP"> - This is a small Pokemon </span>'
+    let bigPokemon = '<span class="bigP"> - This is a big Pokemon! </span>';
+    let smallPokemon = '<span class="smallP"> - This is a small Pokemon </span>';
 
-    // function to add new Pokemon's to the pokemonList array
-
+    // function to add new Pokemon's to the pokemonList array & also check to make sure it adds an object rejecting all other types of
     function add(pokemon){
-      pokemonList.push(pokemon);
+      if (typeof (pokemon) === 'object') {
+        pokemonList.push(pokemon);
+        console.log('You\'ve successfully added a new Pokemon!');
+      } else if (typeof (pokemon) !== 'object') {
+        console.log('Invalid, this input isnt an object');
+      }
     }
 
     // function being declared to return an array from pokemonList
-
     function getAll() {
       return pokemonList;
     }
@@ -49,6 +52,12 @@
         document.write(`${bigPokemon}`);
       }
       // Linebreak after every iteration
-      document.write('<br>')
+      document.write('<br>');
     });
+
+    return {
+      add: add,
+      getAll: getAll
+    };
+
   })();
