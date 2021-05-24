@@ -59,5 +59,4 @@
       add: add,
       getAll: getAll
     };
-
   })();
