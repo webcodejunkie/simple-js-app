@@ -1,6 +1,6 @@
-
+  // implementation of IIFE to avoid global scope complications
   let pokemonRepository = (function() {
-
+    // an array with objects
     let pokemonList = [
       {
         name: 'Arcanine ',
@@ -36,11 +36,20 @@
       return pokemonList;
     }
 
+    // function to log the Pokemon's information
+    function showDetails(pokemon) {
+      console.log(pokemon);
+    }
+
+    // function to creating elements with a eventlistener to console.log the pokemon's information
     function addListItem(pokemon) {
       let pokemonList = document.querySelector('.pokemon-list');
       let listItem = document.createElement('li');
       listItem.classList.add('pokemon-list-items');
       let button = document.createElement('button');
+      button.addEventListener('click', function (event) {
+        showDetails(pokemon);
+      });
       button.innerText = pokemon.name;
       button.classList.add('pokemon-button');
       listItem.appendChild(button);
@@ -54,7 +63,7 @@
     };
   })();
 
-  // a forEach function that'll replace a for loop
+  // a forEach function that'll iterate over pokemonList
   pokemonRepository.getAll().forEach(function(pokemon){
     pokemonRepository.addListItem(pokemon);
   });
