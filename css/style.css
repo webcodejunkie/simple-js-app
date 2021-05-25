@@ -22,8 +22,10 @@ body {
 }
 
 .pokemon-button {
+  width: 200px;
   padding: 1rem;
   color: black;
+  box-shadow: -3px 6px 5px;
 
 }
 
