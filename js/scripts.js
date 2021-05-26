@@ -20,7 +20,6 @@
             name: item.name,
             detailsUrl: item.url
           };
-          showLoadingMessage();
           add(pokemon);
         });
       }).catch(function (e) {
@@ -73,6 +72,7 @@
       listItem.classList.add('pokemon-list-items');
       let button = document.createElement('button');
       button.addEventListener('click', function (event) {
+        showLoadingMessage();
         showDetails(pokemon);
       });
       button.innerText = pokemon.name;
