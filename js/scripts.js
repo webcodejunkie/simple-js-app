@@ -1,29 +1,52 @@
   // implementation of IIFE to avoid global scope complications
   let pokemonRepository = (function() {
-    // an array with objects
-    let pokemonList = [
-      {
-        name: 'Arcanine ',
-        height: 6.2,
-        types: ['Fire']
-      },
+    // an array for our data
+    let pokemonList = [];
+    // attaching an api with a limit of 150 objects to a variable
+    let apiUrl= 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-      {
-        name: 'Gengar ',
-        height: 5.1,
-        types: ['Ghost', 'Poison']
-      },
+    // simple function to display a loading console.log when fetching api
+    function showLoadingMessage() {
+      console.log('Loading Pokemon..')
+    }
 
-      {
-        name: 'Eevee ',
-        height: 1.0,
-        types: ['Normal']
-      }
-    ];
+    // function to load our apiUrl
+    function loadList() {
+      return fetch(apiUrl).then(function (responce) {
+        return responce.json();
+      }).then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          showLoadingMessage();
+          add(pokemon);
+        });
+      }).catch(function (e) {
+        console.error(e);
+      })
+    }
+
+    // function to load the details of the api objects
+    function loadDetails(item) {
+      let url = item.detailsUrl;
+      return fetch(url).then(function (response) {
+        return response.json();
+      }).then(function (details) {
+        // adding the details to the items
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      }).catch(function (e) {
+        console.error(e);
+      });
+    }
 
     // function to add new Pokemon's to the pokemonList array & also check to make sure it adds an object rejecting all other types of
     function add(pokemon) {
-      if (typeof (pokemon) === 'object') {
+      if (
+        typeof (pokemon) === 'object') {
         pokemonList.push(pokemon);
         console.log('You\'ve successfully added a new Pokemon!');
       } else if (typeof (pokemon) !== 'object') {
@@ -38,7 +61,9 @@
 
     // function to log the Pokemon's information
     function showDetails(pokemon) {
-      console.log(pokemon);
+      loadDetails(pokemon).then(function () {
+        console.log(pokemon);
+      });
     }
 
     // function to creating elements with a eventlistener to console.log the pokemon's information
@@ -59,11 +84,16 @@
     return {
       add: add,
       getAll: getAll,
-      addListItem: addListItem
+      addListItem: addListItem,
+      loadList: loadList,
+      loadDetails: loadDetails
     };
   })();
 
-  // a forEach function that'll iterate over pokemonList
-  pokemonRepository.getAll().forEach(function(pokemon){
-    pokemonRepository.addListItem(pokemon);
+  // data being loaded from function loadList fetching the pokemon api
+  pokemonRepository.loadList().then(function () {
+    // a forEach function that'll iterate over pokemonList
+    pokemonRepository.getAll().forEach(function(pokemon){
+      pokemonRepository.addListItem(pokemon);
+    });
   });
