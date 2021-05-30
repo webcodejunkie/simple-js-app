@@ -2,15 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="veiwport" content="width=devoce-width, inital-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
     <title>Pokemon JavaScript App</title>
   </head>
   <body>
 
     <header>
-      <div>
+      <div class="header-content">
         <img class="pokemon-img" src="./imgs/pokemon-logo.png" alt="pokemon-logo">
         <h1>A JavaScript index of Pokemon's</h1>
         <p>Check them out!</p>
@@ -18,6 +19,10 @@
     </header>
 
     <main>
+      <div id="pokemon-modal-container">
+        <div class="pokemon-modal">
+        </div>
+      </div>
       <ul class="pokemon-list">
       </ul>
     </main>
