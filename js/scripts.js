@@ -19,179 +19,27 @@ let pokemonRepository = (function() {
     genSeven: 'https://pokeapi.co/api/v2/pokemon?offset=722&limit=809',
     genEight: 'https://pokeapi.co/api/v2/pokemon?offset=810&limit=898'
   };
-  let apiUrlGenOne = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=151';
-  let apiUrlGenTwo = 'https://pokeapi.co/api/v2/pokemon?offset=152&limit=251';
-  let apiUrlGenThree = 'https://pokeapi.co/api/v2/pokemon?offset=252&limit=386';
-  let apiUrlGenFour = 'https://pokeapi.co/api/v2/pokemon?offset=387&limit=493';
-  let apiUrlGenFive = 'https://pokeapi.co/api/v2/pokemon?offset=494&limit=649';
-  let apiUrlGenSix = 'https://pokeapi.co/api/v2/pokemon?offset=650&limit=721';
-  let apiUrlGenSeven = 'https://pokeapi.co/api/v2/pokemon?offset=722&limit=809';
-  let apiUrlGenEight = 'https://pokeapi.co/api/v2/pokemon?offset=810&limit=898';
+
 
   function loadGens(generation) {
     let url = urls[generation];
-    console.log(url);
-  }
-
-  // functions to load 8 different api's
-  function loadGenOne() {
-    return fetch(apiUrlGenOne)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
+    return fetch(url)
+    .then(function(responce) {
+      return responce.json();
+    })
+    .then(function(json) {
+      json.results.forEach(function(item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url,
+          types: item.types
+        }
+        add(pokemon);
       });
-  }
-
-  function loadGenTwo() {
-    return fetch(apiUrlGenTwo)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
-  }
-
-  function loadGenThree() {
-    return fetch(apiUrlGenThree)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
-  }
-
-  function loadGenFour() {
-    return fetch(apiUrlGenFour)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
-  }
-
-  function loadGenFive() {
-    return fetch(apiUrlGenFive)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
-  }
-
-  function loadGenSix() {
-    return fetch(apiUrlGenSix)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
-  }
-
-  function loadGenSeven() {
-    return fetch(apiUrlGenSeven)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
-  }
-
-  function loadGenEight() {
-    return fetch(apiUrlGenEight)
-      .then(function(responce) {
-        return responce.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-            types: item.types
-          };
-          add(pokemon);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
+    })
+    .catch(function(e) {
+      console.error(e);
+    });
   }
 
   // function to load the details of the api objects
@@ -205,6 +53,7 @@ let pokemonRepository = (function() {
         // adding the details to the items
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
+        item.weight = details.weight;
         item.types = [];
         for (let i = 0; i < details.types.length; i++) {
           item.types.push(details.types[i].type.name);
@@ -260,6 +109,9 @@ let pokemonRepository = (function() {
       let pokemonHeight = $('<p></p>');
       pokemonHeight.text('Height: ' + pokemon.height);
 
+      let pokemonWeight = $('<p></p>');
+      pokemonWeight.text('Weight: ' + pokemon.weight);
+
       // Create inner info in the modal body
       let pokemonModalText = $('<p></p>');
       pokemonModalText.text(
@@ -268,8 +120,10 @@ let pokemonRepository = (function() {
 
       pokemonModalText.appendTo(modalBody);
       pokemonHeight.appendTo(modalBody);
+      pokemonWeight.appendTo(modalBody);
       pokemonImage.appendTo(modalBody);
       modalTitle.text(pokemon.name);
+
 
       // closing the modal on clicking the close options on the modal
       closeButton.on('click', function() {
@@ -332,23 +186,16 @@ let pokemonRepository = (function() {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
-    loadGenOne: loadGenOne,
-    loadGenTwo: loadGenTwo,
-    loadGenThree: loadGenThree,
-    loadGenFour: loadGenFour,
-    loadGenFive: loadGenFive,
-    loadGenSix: loadGenSix,
-    loadGenSeven: loadGenSeven,
-    loadGenEight: loadGenEight,
-    loadDetails: loadDetails,
     clearList: clearList,
-    loadGens: loadGens
+    loadGens: loadGens,
   };
 })();
 
+pokemonRepository.generationButtons();
+
 // 8 functions that'll load 8 differents api's that'll display different pokemon's
 function valGenOne() {
-  pokemonRepository.loadGenOne().then(function(pokemon) {
+  pokemonRepository.loadGens('genOne').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
@@ -358,7 +205,7 @@ function valGenOne() {
 }
 
 function valGenTwo() {
-  pokemonRepository.loadGenTwo().then(function(pokemon) {
+  pokemonRepository.loadGens('genTwo').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
@@ -368,7 +215,7 @@ function valGenTwo() {
 }
 
 function valGenThree() {
-  pokemonRepository.loadGenThree().then(function(pokemon) {
+  pokemonRepository.loadGens('genThree').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
@@ -378,7 +225,7 @@ function valGenThree() {
 }
 
 function valGenFour() {
-  pokemonRepository.loadGenFour().then(function(pokemon) {
+  pokemonRepository.loadGens('genFour').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
@@ -388,7 +235,7 @@ function valGenFour() {
 }
 
 function valGenFive() {
-  pokemonRepository.loadGenFive().then(function(pokemon) {
+  pokemonRepository.loadGens('genFive').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
@@ -398,7 +245,7 @@ function valGenFive() {
 }
 
 function valGenSix() {
-  pokemonRepository.loadGenSix().then(function(pokemon) {
+  pokemonRepository.loadGens('genSix').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
@@ -408,7 +255,7 @@ function valGenSix() {
 }
 
 function valGenSeven() {
-  pokemonRepository.loadGenSeven().then(function(pokemon) {
+  pokemonRepository.loadGens('genSeven').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
@@ -418,7 +265,7 @@ function valGenSeven() {
 }
 
 function valGenEight() {
-  pokemonRepository.loadGenEight().then(function(pokemon) {
+  pokemonRepository.loadGens('genEight').then(function(pokemon) {
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
     });

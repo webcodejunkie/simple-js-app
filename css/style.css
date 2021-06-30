@@ -78,7 +78,7 @@ ul {
 }
 
 .modal-dialog {
-  top: 25%;
+  top: 15%;
 }
 
 .is-visible {
@@ -87,6 +87,7 @@ ul {
 }
 
 .pokemon-list-items {
+  background-color: black;
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -97,13 +98,13 @@ ul {
 }
 
 .button-hover {
-  background-color: black;
-  border: 1px solid transparent;
+  background-color: white;
+  border: 4px solid #0d6efd;
   border-radius: 0.25rem;
   display: flex;
   flex-direction: column-reverse;
   transition-duration: 0.5s;
-  color: white;
+  color: black;
   padding: 1rem;
   width: 280px;
 }
@@ -122,10 +123,14 @@ ul {
 
 .pokemon-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   height: 685px;
   width: auto;
   overflow-y: scroll;
+}
+
+.fireType {
+  background-color: red;
 }
 
 @media all and (min-width: 320px) and (max-width: 942px) {
