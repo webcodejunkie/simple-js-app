@@ -191,8 +191,6 @@ let pokemonRepository = (function() {
   };
 })();
 
-pokemonRepository.generationButtons();
-
 // 8 functions that'll load 8 differents api's that'll display different pokemon's
 function valGenOne() {
   pokemonRepository.loadGens('genOne').then(function(pokemon) {
