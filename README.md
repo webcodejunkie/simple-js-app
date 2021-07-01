@@ -10,8 +10,9 @@ https://user-images.githubusercontent.com/66970141/124044158-beac6880-d9da-11eb-
 
 Not so bad, right? Try it out for yourself! It's live on **GitHub Pages**, heres a link directly the the application— [JavaScript Application](https://webcodejunkie.github.io/simple-js-app/)
 
-## This is my first sucessfully built JavaScript application, the following technologies that I've learned from JavaScript go far and beyond
-I'm going to give an **indepth** process on how it was and the things I've learned while creating this.
+## This is my first build application with JavaScript
+It has a an inclusion of: 
+* IIFE
 
 
 
