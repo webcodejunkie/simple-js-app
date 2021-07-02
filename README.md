@@ -10,7 +10,7 @@ https://user-images.githubusercontent.com/66970141/124044158-beac6880-d9da-11eb-
 
 Not so bad, right? Try it out for yourself! It's live on **GitHub Pages**, heres a link directly the the application— [Pokemon.JS](https://webcodejunkie.github.io/simple-js-app/)
 
-##Pokemon.Js Uses JavaScript ES6 & ESLint
+## Pokemon.Js Uses JavaScript ES6 & ESLint
 
 ### ESLint Rules
 _current rules_
