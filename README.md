@@ -31,3 +31,9 @@ _current rules_
 }
 
 ```
+In the JS Folder in Scripts.js includes also a rule that allows Jquery to not have any complications with ESLint
+
+```
+/* eslint-env jquery */
+
+```
