@@ -38,3 +38,7 @@ In the JS Folder in Scripts.js includes also a rule that allows Jquery to not ha
 /* eslint-env jquery */
 
 ```
+
+#### That's all to it! 
+
+Nothing to complicated at all. very basic HTML, CSS, JavaScript application, very straightforward way to use, thank you for checking this out!
