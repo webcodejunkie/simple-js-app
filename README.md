@@ -14,7 +14,8 @@ Pokemon.Js Uses JavaScript ES6 & ESLint
 
 ### ESLint Rules
 _current rules_
-    {
+```
+{
   "env": {
     "es6": true,
     "browser": true,
@@ -28,3 +29,5 @@ _current rules_
   },
 
 }
+
+```
